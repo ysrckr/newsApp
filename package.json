@@ -12,9 +12,11 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@babel/core": "^7.18.2",
+		"@babel/preset-env": "^7.18.2",
 		"babel-loader": "^8.2.5",
 		"css-loader": "^6.7.1",
 		"html-webpack-plugin": "^5.5.0",
+		"postcss-loader": "^7.0.0",
 		"sass": "^1.52.3",
 		"sass-loader": "^13.0.0",
 		"style-loader": "^3.3.1",
@@ -24,7 +26,11 @@
 	},
 	"dependencies": {
 		"express": "^4.18.1",
+		"postcss": "^8.4.14",
+		"postcss-import": "^14.1.0",
+		"postcss-nested": "^5.0.6",
 		"request": "^2.88.2",
-		"rss-to-json": "^2.0.2"
+		"rss-to-json": "^2.0.2",
+		"tailwindcss": "^1.9.6"
 	}
 }

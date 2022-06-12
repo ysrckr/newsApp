@@ -9,6 +9,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name][contenthash].js',
+		assetModuleFilename: '[name][ext]',
 		clean: true,
 	},
 	module: {
@@ -16,14 +17,61 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
+			}, // scss loader
+			{
+				test: /\.css$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								ident: 'postcss',
+								plugins: [
+									require('postcss-import'),
+									require('tailwindcss'),
+									require('autoprefixer'),
+									require('postcss-nested'),
+								],
+							},
+						},
+					},
+				],
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+					},
+				}, // babel-loader is used to transpile ES6 to ES5
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
 			},
 		],
 	},
+
 	plugins: [
-		new HtmlWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: path.resolve(__dirname, 'src/index.html'),
+		}),
 		new HtmlWebpackPlugin({
 			filename: 'newspages.html',
-			template: 'src/newspages.html',
+			template: path.resolve(__dirname, 'src/newspages.html'),
 		}),
 	],
 	devServer: {

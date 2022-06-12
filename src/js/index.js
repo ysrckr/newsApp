@@ -1,3 +1,5 @@
+import '../style/main.scss'
+import '../style/main.css'
 import { parse } from 'rss-to-json'
 
 const getNews = async () => {
@@ -13,14 +15,14 @@ const newsFeed = async () => {
 	const container = document.querySelector('.container')
 	const newsList = await getNews()
 	newsList.map(news => {
-        console.log(news.title, news.description)
-        container.innerHTML +=   `
+		console.log(news.title, news.description)
+		container.innerHTML += `
         <div class="news-item">
             <h3><a href="${news.link}">${news.title}</a></h3>
             <p>${news.description}</p>
         </div>
        `
-    })
-   
+	})
+	
 }
 newsFeed()
