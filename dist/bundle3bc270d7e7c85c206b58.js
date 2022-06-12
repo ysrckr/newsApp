@@ -435,14 +435,14 @@ eval("const hexRegex = /^[-+]?0x[a-fA-F0-9]+$/;\nconst numRegex = /^([\\-\\+])?(
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var rss_to_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rss-to-json */ \"./node_modules/rss-to-json/dist/index.js\");\n/* harmony import */ var rss_to_json__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(rss_to_json__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst getNews = async () => {\n\tconst feed = 'http://localhost:4050/sozcu'\n\ttry {\n\t\tconst news = await (0,rss_to_json__WEBPACK_IMPORTED_MODULE_0__.parse)(feed)\n\t\treturn news.items\n\t} catch (error) {\n\t\tconsole.log(error)\n\t}\n}\nconst newsFeed = async () => {\n\tconst container = document.querySelector('.container')\n\tconst newsList = await getNews()\n\tnewsList.map(news => {\n        console.log(news.title, news.description)\n        container.innerHTML +=   `\n        <div class=\"news-item\">\n            <h3><a href=\"${news.link}\">${news.title}</a></h3>\n            <p>${news.description}</p>\n        </div>\n       `\n    })\n   \n}\nnewsFeed()\n\n\n//# sourceURL=webpack://news_backend/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var rss_to_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rss-to-json */ \"./node_modules/rss-to-json/dist/index.js\");\n/* harmony import */ var rss_to_json__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(rss_to_json__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst getNews = async () => {\n\tconst feed = 'http://localhost:4050/sozcu'\n\ttry {\n\t\tconst news = await (0,rss_to_json__WEBPACK_IMPORTED_MODULE_0__.parse)(feed)\n\t\treturn news.items\n\t} catch (error) {\n\t\tconsole.log(error)\n\t}\n}\nconst newsFeed = async () => {\n\tconst container = document.querySelector('.container')\n\tconst newsList = await getNews()\n\tnewsList.map(news => {\n        console.log(news.title, news.description)\n        container.innerHTML +=   `\n        <div class=\"news-item\">\n            <h3><a href=\"${news.link}\">${news.title}</a></h3>\n            <p>${news.description}</p>\n        </div>\n       `\n    })\n   \n}\nnewsFeed()\n\n\n//# sourceURL=webpack://news_backend/./src/js/index.js?");
 
 /***/ }),
 
@@ -529,7 +529,7 @@ eval("module.exports = JSON.parse('{\"name\":\"axios\",\"version\":\"0.21.4\",\"
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/index.js");
 /******/ 	
 /******/ })()
 ;
