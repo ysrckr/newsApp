@@ -79,7 +79,9 @@ module.exports = {
 			directory: path.resolve(__dirname, 'dist'),
 		},
 		port: 4000,
-		open: true, // open browser
+		open: {
+			app: 'Google Chrome',
+		}, // open browser
 		hot: true, // hot reload
 		compress: true, // enable gzip compression
 		historyApiFallback: true,
